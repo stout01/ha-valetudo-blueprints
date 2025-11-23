@@ -71,6 +71,18 @@ blueprint:
             - French
             - German
             - Italian
+    notify_on_success:
+      name: Notify on Successful Cleaning
+      description: Send a notification when cleaning is completed successfully.
+      default: true
+      selector:
+        boolean:
+    notify_on_error:
+      name: Notify on Error
+      description: Send a notification when the vacuum encounters an error.
+      default: true
+      selector:
+        boolean:
 
 trigger_variables:
   rendered_map_sensor: !input rendered_map
@@ -106,13 +118,23 @@ condition:
   - condition: or
     alias: "Finished cleaning task or error message is not empty"
     conditions:
-      - condition: trigger
-        id: cleaning_finished
-      - condition: not
+      - condition: and
         conditions:
-          - condition: state
-            entity_id: !input error_message
-            state: ""
+          - condition: trigger
+            id: cleaning_finished
+          - condition: template
+            value_template: !input notify_on_success
+      - condition: and
+        conditions:
+          - condition: trigger
+            id: error
+          - condition: template
+            value_template: !input notify_on_error
+          - condition: not
+            conditions:
+              - condition: state
+                entity_id: !input error_message
+                state: ""
 
 variables:
   vacuum_id: !input vacuum
