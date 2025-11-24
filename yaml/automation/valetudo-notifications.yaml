@@ -126,8 +126,6 @@ condition:
             value_template: !input notify_on_success
       - condition: and
         conditions:
-          - condition: trigger
-            id: error
           - condition: template
             value_template: !input notify_on_error
           - condition: not
