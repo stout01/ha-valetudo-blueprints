@@ -1,7 +1,7 @@
 blueprint:
   name: "Valetudo: Error Notifications Only"
   description: Sends a notification only when the vacuum encounters an error.
-  source_url: https://github.com/mundschenk-at/ha-valetudo-blueprints/blob/main/yaml/automation/valetudo-notifications.yaml
+  source_url: https://github.com/stout01/ha-valetudo-blueprints/blob/main/yaml/automation/valetudo-error-notifications.yaml
   domain: automation
   homeassistant:
     min_version: 2022.6.0
