@@ -78,7 +78,7 @@ trigger:
     for:
       hours: 0
       minutes: 0
-      seconds: 5
+      seconds: 0
     id: error
 condition:
   - condition: not
