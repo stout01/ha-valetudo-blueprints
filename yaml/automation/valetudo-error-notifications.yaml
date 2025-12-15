@@ -86,6 +86,9 @@ condition:
       - condition: state
         entity_id: !input error_message
         state: ""
+      - condition: state
+        entity_id: !input error_message
+        state: "Low battery"
 
 variables:
   vacuum_id: !input vacuum
